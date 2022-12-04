@@ -48,7 +48,7 @@ This custom textfield is a very unique and fluid centerpiece for any form or sea
 
 ## Example:
 
-`
+```
 import SwiftUI
 import Sheathed-TextField-SwiftUI
 
@@ -109,7 +109,7 @@ func setModels() {
             }
         }
         }
-  `
+```
 
 <div align="center">
 
