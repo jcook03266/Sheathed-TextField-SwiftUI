@@ -6,7 +6,7 @@
 
 import SwiftUI
 
- struct SheathedTextField: View {
+struct SheathedTextField: View {
     @Namespace private var sheathedTextField
     
     // MARK: - Observed
@@ -19,7 +19,7 @@ import SwiftUI
     var animationDuration: CGFloat = 0.3
     
     // MARK: - Dimensions
-    var mainSize: CGSize = CGSize(width: 400, height: 60)
+    var mainSize: CGSize = CGSize(width: 370, height: 60)
     var textFieldContainerSize: CGSize {
         return model.unsheathed ? CGSize(width: mainSize.width - (sideIconUnsheathedTrailingPadding * 0.8),
                                          height: mainSize.height) : mainSize
@@ -44,8 +44,8 @@ import SwiftUI
                       height: 25)
     }
     var cornerRadius: CGFloat = 40,
-     buttonCornerRadius: CGFloat = 40,
-     borderWidth: CGFloat = 2
+        buttonCornerRadius: CGFloat = 40,
+        borderWidth: CGFloat = 2
     
     // MARK: - Padding
     var textFieldLeadingPadding: CGFloat = 22,
@@ -169,45 +169,45 @@ import SwiftUI
                 Spacer()
             }
             ZStack(alignment: .leading) {
-            textFieldContainer
-                .background(
-                    textFieldContainerInterior
-                )
-                        textField
-                        
-                        HStack {
-                            sheathe
-                                .shadow(color: .gray.opacity(0.45),
-                                        radius: 0,
-                                        x: 3,
-                                        y: 0)
-                                .overlay {
-                                    HStack(alignment: .center) {
-                                        sideIcon
-                                            .padding([.leading],
-                                                     sideIconLeadingPadding)
-                                            .padding([.trailing],
-                                                     sideIconTrailingPadding)
-                                        
-                                        titleView.opacity(!model.unsheathed ? 1 : 0)
-                                            .animation(.none,
-                                                       value: model.unsheathed)
-                                        if !model.unsheathed { Spacer() }
-                                    }
-                                }
-                                .onTapGesture {
-                                    triggerUnsheatheAction()
-                                }
-                            
-                            Spacer()
-                            
-                            inFieldButton
-                                .padding([.trailing],
-                                         inFieldButtonTrailingPadding)
+                textFieldContainer
+                    .background(
+                        textFieldContainerInterior
+                    )
+                textField
+                
+                HStack {
+                    sheathe
+                        .shadow(color: .gray.opacity(0.45),
+                                radius: 0,
+                                x: 3,
+                                y: 0)
+                        .overlay {
+                            HStack(alignment: .center) {
+                                sideIcon
+                                    .padding([.leading],
+                                             sideIconLeadingPadding)
+                                    .padding([.trailing],
+                                             sideIconTrailingPadding)
+                                
+                                titleView.opacity(!model.unsheathed ? 1 : 0)
+                                    .animation(.none,
+                                               value: model.unsheathed)
+                                if !model.unsheathed { Spacer() }
+                            }
                         }
-                    }
-                .frame(width: textFieldContainerSize.width,
-                       height: textFieldContainerSize.height)
+                        .onTapGesture {
+                            triggerUnsheatheAction()
+                        }
+                    
+                    Spacer()
+                    
+                    inFieldButton
+                        .padding([.trailing],
+                                 inFieldButtonTrailingPadding)
+                }
+            }
+            .frame(width: textFieldContainerSize.width,
+                   height: textFieldContainerSize.height)
         }
     }
     
@@ -232,6 +232,9 @@ import SwiftUI
                     guard !model.unsheathed else { return }
                     triggerUnsheatheAction()
                 }
+                .onLongPressGesture(perform: {
+                    triggerUnsheatheAction()
+                })
                 .onChange(of: textFieldFocused) { newValue in
                     model.focused = newValue
                     
@@ -245,7 +248,7 @@ import SwiftUI
                 }
                 .animation(.easeInOut(duration: animationDuration),
                            value: model.unsheathed)
-         
+            
             Spacer()
         }
     }
@@ -274,12 +277,17 @@ struct SheathedTextField_Previews: PreviewProvider {
         return passwordTextFieldModel
     }
     
-    static var previews: some View {
+    static func getTextField() -> SheathedTextField {
         let model = getModel()
         
-        SheathedTextField(model: model)
-            .previewDisplayName("Sheathed TextField")
-            .previewLayout(.sizeThatFits)
-            .padding([.all], 40)
+        return SheathedTextField(model: model)
+    }
+    
+    static var previews: some View {
+        VStack(alignment: .center) {
+            getTextField()
+                .previewDisplayName("Sheathed TextField")
+                .previewLayout(.sizeThatFits)
+        }
     }
 }
