@@ -222,3 +222,6 @@ You can trigger an unsheathe action at any time by long pressing the textfield, 
 https://user-images.githubusercontent.com/63657230/205480657-3303207a-bc1d-457d-b1d8-64cb90eb218e.mp4
 
 </div>
+
+## Support
+If you really enjoyed this simple library, then consider checking out my <a href="https://github.com/jcook03266" target=_blank>other work</a>, and or supporting me through my <a href="https://www.paypal.me/JCook215" target=_blank>Sponsor links</a> on the side menu. Thanks for reading; keep calm and code on! <3
