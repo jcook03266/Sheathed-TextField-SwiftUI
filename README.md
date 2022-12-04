@@ -181,7 +181,7 @@ var body: some View {
 ```[textFieldModel].focus()```
 
 ### Why does my text clear upon editing past content when the textfield is marked as protected?
-This is expected behavior because secure text fields clear past text when you go back to edit it.
+This is expected behavior because a secure text field clears past text when you go back to edit it.
 
 ### How do I validate a text entry?
 Specify a validation condition to be executed every time the text entry changes, and set entryValidationEnabled to `True` to enable validation
