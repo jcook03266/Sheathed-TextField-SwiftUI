@@ -33,11 +33,25 @@ class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
     }
     
     // MARK: - Published
-    @Published var textEntry: String
+    @Published var textEntry: String {
+        didSet {
+            guard entryValidationEnabled else { return }
+            
+            shouldValidateEntry = !textEntry.isEmpty
+            executeValidationCondition()
+        }
+    }
     @Published var enabled: Bool = true
     @Published var focused: Bool = false
     @Published var unsheathed: Bool = false
     @Published var protected: Bool = false
+    
+    // Entry validation
+    @Published var validEntry: Bool = false
+    @Published var shouldValidateEntry: Bool = false
+    /// Set this to enable or disable entry validation visual indication entirely
+    @Published var entryValidationEnabled: Bool = false
+    var validationCondition: ((String) -> Bool)? = nil
     
     // MARK: - Styling
     // Main Icon
@@ -47,21 +61,26 @@ class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
         // MARK: - General Properties
         // Interior
         fieldBackgroundColor: Color = .white,
+        textFieldTextColor: Color = .black,
         textColor: Color = .white,
-        borderColor: Color = .black,
-        sheatheColor: Color = .black,
+        borderColor: Color = .accentColor,
+        sheatheColor: Color = .accentColor,
         textFont: Font = Font.system(size: 16),
         fontWeight: Font.Weight = .semibold,
         
         // Exterior / Shadow
         invalidEntryGlow: Color? = .red,
-        validEntryGlow: Color? = .green,
-        shadowColor: Color? = .gray.opacity(0.45),
-        shadowRadius: CGFloat? = 0,
-        shadowOffset: CGSize? = CGSize(width: 0, height: 6),
-        
-        // MARK: - Optional in-field button properties
-        inFieldButtonIcon: Image? = nil,
+        validEntryGlow: Color? = .accentColor,
+        defaultShadowColor: Color? = .gray.opacity(0.45),
+        shadowRadius: CGFloat? = 2,
+        shadowOffset: CGSize? = CGSize(width: 0, height: 6)
+    
+    var shadowColor: Color? {
+        return entryValidationEnabled && shouldValidateEntry ? (validEntry ? validEntryGlow : invalidEntryGlow) : defaultShadowColor
+    }
+    
+    // MARK: - Optional in-field button properties
+    var inFieldButtonIcon: Image? = nil,
         inFieldButtonAction: (() -> Void)? = nil,
         inFieldButtonIconTint: Color? = .gray
     

@@ -129,6 +129,7 @@ struct SheathedTextField: View {
             if !model.protected {
                 TextField(model.title,
                           text: model.boundTextEntry)
+                .foregroundColor(model.textFieldTextColor)
                 .textInputAutocapitalization(model.textInputAutocapitalization)
                 .textContentType(model.textContentType)
                 .keyboardType(model.keyboardType)
@@ -141,11 +142,14 @@ struct SheathedTextField: View {
                 .padding([.trailing],
                          textFieldTrailingPadding)
                 .submitLabel(model.submitLabel)
-                .onSubmit { model.onSubmitAction?() }
+                .onSubmit {
+                    model.onSubmitAction?()
+                }
             }
             else {
                 SecureField(model.title,
                             text: model.boundTextEntry)
+                .foregroundColor(model.textFieldTextColor)
                 .textInputAutocapitalization(model.textInputAutocapitalization)
                 .textContentType(model.textContentType)
                 .keyboardType(model.keyboardType)
@@ -158,7 +162,9 @@ struct SheathedTextField: View {
                 .padding([.trailing],
                          textFieldTrailingPadding)
                 .submitLabel(model.submitLabel)
-                .onSubmit { model.onSubmitAction?() }
+                .onSubmit {
+                    model.onSubmitAction?()
+                }
             }
         }
     }
@@ -263,6 +269,10 @@ struct SheathedTextField_Previews: PreviewProvider {
             model.title = "Password"
             model.placeholderText = "Cr3&TiV3Password!23"
             model.icon = Image(systemName: "lock.fill")
+            model.entryValidationEnabled = true
+            model.validationCondition = { text in
+                return text == "hello"
+            }
             
             // In-field button
             model.inFieldButtonIcon = Image(systemName: "eye.slash")

@@ -26,6 +26,14 @@ protocol GenericTextFieldModelProtocol: ObservableObject {
     var unsheathed: Bool { get set }
     var protected: Bool { get set }
     
+    // Entry validation
+    /// Trigger this when validating the text entry with some separate validation module
+    var validEntry: Bool { get set }
+    var shouldValidateEntry: Bool { get set }
+    /// Set this to enable or disable entry validation visual indication entirely
+    var entryValidationEnabled: Bool { get set }
+    var validationCondition: ((String) -> Bool)? { get set }
+    
     // MARK: - Actions
     var onSubmitAction: (() -> Void)? { get set }
 }
@@ -39,6 +47,7 @@ protocol SheathedTextFieldModelProtocol: GenericTextFieldModelProtocol {
     // MARK: - General Properties
     // Interior
     var fieldBackgroundColor: Color { get set }
+    var textFieldTextColor: Color { get set }
     var textColor: Color { get set }
     var borderColor: Color { get set }
     var sheatheColor: Color { get set }
@@ -48,7 +57,7 @@ protocol SheathedTextFieldModelProtocol: GenericTextFieldModelProtocol {
     // Exterior / Shadow
     var invalidEntryGlow: Color? { get set }
     var validEntryGlow: Color? { get set }
-    var shadowColor: Color? { get set }
+    var shadowColor: Color? { get }
     var shadowRadius: CGFloat? { get set }
     var shadowOffset: CGSize? { get set }
     
@@ -63,6 +72,8 @@ protocol SheathedTextFieldModelProtocol: GenericTextFieldModelProtocol {
     
     /// Simplified way of focusing the textfield attached to this model from an external source, i.e another textfield on submission
     func focus()
+    
+    func executeValidationCondition()
 }
 
 extension SheathedTextFieldModelProtocol {
@@ -72,5 +83,10 @@ extension SheathedTextFieldModelProtocol {
         DispatchQueue.main.async {
             self.focused = true
         }
+    }
+    
+    func executeValidationCondition() {
+        guard let condition = validationCondition else { return }
+        validEntry = condition(textEntry)
     }
 }
