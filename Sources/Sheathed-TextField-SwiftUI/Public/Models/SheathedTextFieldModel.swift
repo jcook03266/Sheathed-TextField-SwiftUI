@@ -6,11 +6,11 @@
 
 import SwiftUI
 
-class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
+public final class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
     // MARK: - Properties
-    let id: UUID = .init()
+    public let id: UUID = .init()
     
-    var keyboardType: UIKeyboardType = .default,
+    public var keyboardType: UIKeyboardType = .default,
         textContentType: UITextContentType = .username,
         textInputAutocapitalization: TextInputAutocapitalization = .never,
         submitLabel: SubmitLabel = .done,
@@ -24,7 +24,7 @@ class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
         onSubmitAction: (() -> Void)? = nil
     
     // MARK: - Binding (Non-property wrapper)
-    var boundTextEntry: Binding<String> {
+    public var boundTextEntry: Binding<String> {
         .init {
             return self.textEntry
         } set: { newVal in
@@ -33,7 +33,7 @@ class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
     }
     
     // MARK: - Published
-    @Published var textEntry: String {
+    @Published public var textEntry: String {
         didSet {
             guard entryValidationEnabled else { return }
             
@@ -41,21 +41,21 @@ class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
             executeValidationCondition()
         }
     }
-    @Published var enabled: Bool = true
-    @Published var focused: Bool = false
-    @Published var unsheathed: Bool = false
-    @Published var protected: Bool = false
+    @Published public var enabled: Bool = true
+    @Published public var focused: Bool = false
+    @Published public var unsheathed: Bool = false
+    @Published public var protected: Bool = false
     
     // Entry validation
-    @Published var validEntry: Bool = false
-    @Published var shouldValidateEntry: Bool = false
+    @Published public var validEntry: Bool = false
+    @Published public var shouldValidateEntry: Bool = false
     /// Set this to enable or disable entry validation visual indication entirely
-    @Published var entryValidationEnabled: Bool = false
-    var validationCondition: ((String) -> Bool)? = nil
+    @Published public var entryValidationEnabled: Bool = false
+    public var validationCondition: ((String) -> Bool)? = nil
     
     // MARK: - Styling
     // Main Icon
-    var icon: Image?,
+    public var icon: Image?,
         iconColor: Color? = .white,
         
         // MARK: - General Properties
@@ -75,16 +75,16 @@ class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
         shadowRadius: CGFloat? = 0,
         shadowOffset: CGSize? = CGSize(width: 0, height: 6)
     
-    var shadowColor: Color? {
+    public var shadowColor: Color? {
         return entryValidationEnabled && shouldValidateEntry ? (validEntry ? validEntryGlow : invalidEntryGlow) : defaultShadowColor
     }
     
     // MARK: - Optional in-field button properties
-    var inFieldButtonIcon: Image? = nil,
+    public var inFieldButtonIcon: Image? = nil,
         inFieldButtonAction: (() -> Void)? = nil,
         inFieldButtonIconTint: Color? = .gray
     
-    init(title: String = "",
+    public init(title: String = "",
          placeholderText: String = "",
          textEntry: String = "")
     {
@@ -93,7 +93,7 @@ class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
         self.textEntry = textEntry
     }
     
-    func configurator(configuration: @escaping ((SheathedTextFieldModel)-> Void)) {
+    public func configurator(configuration: @escaping ((SheathedTextFieldModel)-> Void)) {
         configuration(self)
     }
 }

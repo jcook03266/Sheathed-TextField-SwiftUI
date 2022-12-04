@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-struct SheathedTextField: View {
+public struct SheathedTextField: View {
     @Namespace private var sheathedTextField
     
     // MARK: - Observed
@@ -240,7 +240,7 @@ struct SheathedTextField: View {
         }
     }
     
-    var body: some View {
+    public var body: some View {
         HStack {
             Spacer()
             mainContainer
@@ -270,7 +270,7 @@ struct SheathedTextField: View {
     }
 }
 
-struct SheathedTextField_Previews: PreviewProvider {
+private struct SheathedTextField_Previews: PreviewProvider {
     static func getModel() -> SheathedTextFieldModel {
         let passwordTextFieldModel: SheathedTextFieldModel = .init()
         

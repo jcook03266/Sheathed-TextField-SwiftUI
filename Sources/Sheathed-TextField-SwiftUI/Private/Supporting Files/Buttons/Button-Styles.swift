@@ -7,7 +7,7 @@
 import SwiftUI
 
 /// Shrinks the button by the specified amount
-internal struct GenericSpringyShrink: ButtonStyle {
+struct GenericSpringyShrink: ButtonStyle {
     var springResponse: CGFloat = 1.2
     var scaleAmount: CGFloat = 0.8
     
@@ -19,7 +19,7 @@ internal struct GenericSpringyShrink: ButtonStyle {
     }
 }
 
-internal extension ButtonStyle where Self == GenericSpringyShrink {
+extension ButtonStyle where Self == GenericSpringyShrink {
     static var genericSpringyShrink: Self {
         return .init()
     }

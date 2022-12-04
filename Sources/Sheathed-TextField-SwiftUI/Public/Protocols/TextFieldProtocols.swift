@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-protocol GenericTextFieldModelProtocol: ObservableObject {
+public protocol GenericTextFieldModelProtocol: ObservableObject {
     // MARK: - Constants
     var id: UUID { get }
     var keyboardType: UIKeyboardType { get set }
@@ -42,7 +42,7 @@ protocol GenericTextFieldModelProtocol: ObservableObject {
     var onSubmitAction: (() -> Void)? { get set }
 }
 
-protocol SheathedTextFieldModelProtocol: GenericTextFieldModelProtocol {
+public protocol SheathedTextFieldModelProtocol: GenericTextFieldModelProtocol {
     // MARK: - Main Icon
     /// To be displayed on the side of the textfield
     var icon: Image? { get set }
@@ -80,7 +80,7 @@ protocol SheathedTextFieldModelProtocol: GenericTextFieldModelProtocol {
     func executeValidationCondition()
 }
 
-extension SheathedTextFieldModelProtocol {
+public extension SheathedTextFieldModelProtocol {
     func focus() {
         unsheathed = true
         
