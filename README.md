@@ -10,4 +10,15 @@
  
 </div>
 
+This custom textfield is a very unique and fluid centerpiece for any form or search menu built using SwiftUI. It was designed to be as eye-catching and functional as possible, every element of this textfield adds not just stylistic value, but purpose as well. From the name you'd be right to guess the naming convention was derived from swords, as the transition of the textfield resembles the unsheathing of a sword; high precision, flamboyant, and purposeful; you're uncovering a tool of great importance, a gateway of personalization for your application.
 
+
+
+<div align="center">
+
+## Demonstration
+### Here's a demo of a login form built using two sheathed textfields in a VStack. Auto-fill functionality works as expected with this custom textfield.
+
+https://user-images.githubusercontent.com/63657230/205480657-3303207a-bc1d-457d-b1d8-64cb90eb218e.mp4
+
+</div>
