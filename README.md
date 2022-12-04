@@ -12,10 +12,12 @@
 
 <div align="center">
 
-<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/Login-form-shot.jpg" width="600">
 <img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/sword.jpg" width="600">
+<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/Login-form-shot.jpg" width="600">
 
 </div>
+
+## The pen is mightier than the sword!
 
 This custom textfield is a very unique and fluid centerpiece for any form or search menu built using SwiftUI. It was designed to be as eye-catching and functional as possible, every element of this textfield adds not just stylistic value, but purpose as well. From the name you'd be right to guess the naming convention was derived from swords, as the transition of the textfield resembles the unsheathing of a sword; high precision, flamboyant, and purposeful; you're uncovering a tool of great importance, a gateway of personalization for your application.
 
