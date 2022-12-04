@@ -8,20 +8,12 @@
 [![GitHub version](https://badge.fury.io/gh/jcook03266%2FSheathed-TextField-SwiftUI.svg)](https://github.com/jcook03266/Sheathed-TextField-SwiftUI)
 [![GitHub followers](https://img.shields.io/github/followers/jcook03266.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/jcook03266?tab=followers)
  
-</div>
-
 <div align="center">
-
-<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/sword.jpg" width="600">
-<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/Login-form-shot.jpg" width="600">
-
-</div>
-
 <details>
  <summary> Quick Navigation </summary> 
  
 * [Summary ▶︎](#The-pen-is-mightier-than-the-sword)
-* [Platforms ▶︎](#Supported-Platforms
+* [Platforms ▶︎](#Supported-Platforms)
 * [Requirements ▶︎](#Minimum-Required-iOS-Version)
 * [Installation ▶︎](#Installation)
 * [How to use it ▶︎](#How-to-use-this-package-in-your-code)
@@ -30,6 +22,15 @@
 * [Demo ▶︎](#Demonstration)
 
 </details>
+</div>
+ 
+</div>
+
+<div align="center">
+
+<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/sword.jpg" width="600">
+<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/Login-form-shot.jpg" width="600">
+
 </div>
 
 ## The pen is mightier than the sword!
