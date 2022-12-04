@@ -17,6 +17,21 @@
 
 </div>
 
+<details>
+ <summary> Quick Navigation </summary> 
+ 
+* [Summary ▶︎](#The-pen-is-mightier-than-the-sword)
+* [Platforms ▶︎](#Supported-Platforms
+* [Requirements ▶︎](#Minimum-Required-iOS-Version)
+* [Installation ▶︎](#Installation)
+* [How to use it ▶︎](#How-to-use-this-package-in-your-code)
+* [Example ▶︎](#Example)
+* [Important Implementation Overview ▶︎](#Brief-Overview-of-necessary-property-wrappers)
+* [Demo ▶︎](#Demonstration)
+
+</details>
+</div>
+
 ## The pen is mightier than the sword!
 
 This custom textfield is a very unique and fluid centerpiece for any form or search menu built using SwiftUI. It was designed to be as eye-catching and functional as possible, every element of this textfield adds not just stylistic value, but purpose as well. From the name you'd be right to guess the naming convention was derived from swords, as the transition of the textfield resembles the unsheathing of a sword; high precision, flamboyant, and purposeful; you're uncovering a tool of great importance, a gateway of personalization for your application.
@@ -168,8 +183,8 @@ var body: some View {
 ```
 
 ## Brief Overview of necessary property wrappers:
-* `Sheathed-TextField` models must be marked as published when embedded in a view model, or stateObjects when they're embedded in a view
-* In order for the parent view to respond to changes in this textfield, new events have to be emitted by a publisher and broadcasted through an observable object, or listened to as an observable object by a view, namely as a state object to prevent a loss of state when the view reloads given a new value emitted by the model
+* `Sheathed-TextField` models must be marked as `Published` when embedded in a view model, or `StateObject` when they're embedded in a `View`
+* In order for the parent view to respond to changes in this textfield, new events have to be emitted by a `Publisher` and broadcasted through an `ObservableObject`, or listened to as an observable object by a view, namely as a state object to prevent a loss of state when the view reloads given a new value emitted by the model
 * It's not recommended to embed the textfield model directly into a view, for lack of simplicity. The model should be housed in a view model in order to centralize all emissions from important objects currently present in the scene.
 * Adhere to the functionality of SwiftUI property wrappers and you're good to go!
 
