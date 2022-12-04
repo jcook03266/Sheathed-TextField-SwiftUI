@@ -24,7 +24,7 @@ public struct SheathedTextField: View {
     // MARK: - Dimensions
     public var mainSize: CGSize = CGSize(width: 370, height: 60)
     public var textFieldContainerSize: CGSize {
-        return model.unsheathed ? CGSize(width: mainSize.width - (sideIconUnsheathedTrailingPadding * 0.8),
+        return model.unsheathed && model.icon != nil ? CGSize(width: mainSize.width - (sideIconUnsheathedTrailingPadding * 0.8),
                                          height: mainSize.height) : mainSize
     }
     public var textFieldSize: CGSize {
@@ -203,6 +203,11 @@ public struct SheathedTextField: View {
                                              sideIconTrailingPadding)
                                 
                                 if !model.unsheathed {
+                                    
+                                    if model.icon == nil {
+                                        Spacer()
+                                    }
+                                    
                                     titleView.opacity(!model.unsheathed ? 1 : 0)
                                         .transition(.scale
                                             .animation(.easeInOut))
@@ -283,7 +288,6 @@ struct SheathedTextField_Previews: PreviewProvider {
             // Main properties
             model.title = "Password"
             model.placeholderText = "Cr3&TiV3Password!23"
-            model.icon = Image(systemName: "lock.fill")
             model.entryValidationEnabled = true
             model.validationCondition = { text in
                 return text == "password123"
