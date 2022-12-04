@@ -12,8 +12,8 @@
 
 <div align="center">
 
-<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/Login-form-shot.jpg" width="400">
-<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/sword.jpg" width="400">
+<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/Login-form-shot.jpg" width="600">
+<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/sword.jpg" width="600">
 
 </div>
 
