@@ -212,7 +212,7 @@ Specify a validation condition to be executed every time the text entry changes,
             }
 ```
 ### How do I trigger an 'unsheathe' when an icon view isn't present / when I don't define a side icon? 
-You can trigger an unsheathe action at any time by long pressing the textfield, this is also possible when an icon is present. When the icon view is rendered you can simply tap on it to trigger this event, but this same functionality isn't available for the textfield component of the view because all touches will be eaten up by the `onTap` listener.
+You can trigger an unsheathe action at any time by long pressing the textfield, this is also possible when an icon is present. When the icon view is rendered you can simply tap on it to trigger this event, but, this same functionality isn't available for the textfield component of the view because all touches will be eaten up by the `onTap` listener.
 
 <div align="center">
 
