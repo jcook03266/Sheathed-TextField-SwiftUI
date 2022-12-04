@@ -53,7 +53,7 @@ This custom textfield is a very unique and fluid centerpiece for any form or sea
 import SwiftUI
 import Sheathed-TextField-SwiftUI
 
-class LoginScreenViewModel: CoordinatedGenericViewModel {
+class LoginScreenViewModel: ObservableObject {
     // MARK: - Published / TextField Models
     @Published var username_emailTextFieldModel: SheathedTextFieldModel!
     @Published var passwordTextFieldModel: SheathedTextFieldModel!
