@@ -40,14 +40,18 @@ This custom textfield is a very unique and fluid centerpiece for any form or sea
 7. Done!
 
 ## How to use this package in your code:
-1. At the top of your swift file add: `Import Sheathed-TextField-SwiftUI`
+1. At the top of your swift file add: `import Sheathed-TextField-SwiftUI`
 2. Define a `SheathedTextFieldModel`
 3. Configure the model using the built in `configurator` function
 4. Define a `SheathedTextField` view and insert the configured model into that view
 5. Install the `SheathedTextField` inside of a parent view, Note: The textfield is already centered, and it has a device appropriate width you can also specify in the view's `init` constructor
 
 ## Example:
+
 `
+import SwiftUI
+import Sheathed-TextField-SwiftUI
+
 class LoginScreenViewModel: CoordinatedGenericViewModel {
 // MARK: - Published / TextField Models
     @Published var username_emailTextFieldModel: SheathedTextFieldModel!
