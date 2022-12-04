@@ -167,6 +167,35 @@ var body: some View {
 }
 ```
 
+## Brief Overview of necessary property wrappers:
+* `Sheathed-TextField` models must be marked as published when embedded in a view model, or stateObjects when they're embedded in a view
+* In order for the parent view to respond to changes in this textfield, new events have to be emitted by a publisher and broadcasted through an observable object, or listened to as an observable object by a view, namely as a state object to prevent a loss of state when the view reloads given a new value emitted by the model
+* It's not recommended to embed the textfield model directly into a view, for lack of simplicity. The model should be housed in a view model in order to centralize all emissions from important objects currently present in the scene.
+* Adhere to the functionality of SwiftUI property wrappers and you're good to go!
+
+## Extended Information / Q&A:
+### How do I access the text I enter?
+```[textFieldModel].textEntry```
+
+### How can I focus the text field from an external source?
+```[textFieldModel].focus()```
+
+### Why does my text clear upon editing past content when the textfield is marked as protected?
+Secure textfields clear past text when you go back to edit.
+
+### How do I validate a text entry?
+Specify a validation condition to be executed every time the text entry changes, and set entryValidationEnabled to `True` to enable validation
+```
+[textFieldModel].entryValidationEnabled = true
+
+            // This is just an example, use REGEX to properly validate the text input in this closure 
+            model.validationCondition = { text in
+                !text.contains {
+                    $0 == "." || $0 == "/"
+                }
+            }
+```
+
 <div align="center">
 
 ## Demonstration
