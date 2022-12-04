@@ -48,12 +48,13 @@ This custom textfield is a very unique and fluid centerpiece for any form or sea
 
 ## Example:
 
+### View Model:
 ```
 import SwiftUI
 import Sheathed-TextField-SwiftUI
 
 class LoginScreenViewModel: CoordinatedGenericViewModel {
-// MARK: - Published / TextField Models
+    // MARK: - Published / TextField Models
     @Published var username_emailTextFieldModel: SheathedTextFieldModel!
     @Published var passwordTextFieldModel: SheathedTextFieldModel!
     
@@ -63,7 +64,7 @@ class LoginScreenViewModel: CoordinatedGenericViewModel {
         setModels()
     }
     
-func setModels() {
+    func setModels() {
         username_emailTextFieldModel = .init()
         username_emailTextFieldModel.configurator { [weak self] model in
             guard let self = self else { return }
@@ -110,6 +111,59 @@ func setModels() {
         }
         }
 ```
+
+### View:
+
+```
+import SwiftUI
+
+// MARK: - Observed
+@StateObject var model: LoginScreenViewModel
+
+...
+    
+struct LoginScreen: View {
+
+    // TextFields
+    var username_EmailTextField: some View {
+        let textField =  SheathedTextField(model: model.username_emailTextFieldModel)
+        
+        return textField
+    }
+    var password_TextField: some View {
+        let textField = SheathedTextField(model: model.passwordTextFieldModel)
+        
+        return textField
+    }
+    var textFields: some View {
+        VStack(spacing: textFieldSpacing) {
+            username_EmailTextField
+            
+            password_TextField
+        }
+    }
+
+var body: some View {
+        GeometryReader { geom in
+            ScrollView {
+                VStack {
+                    ...
+                    
+                    textFields
+                    
+                }
+                .frame(width: geom.size.width)
+                
+                ...
+        }
+        .submitScope(true) // Note: Prevents submissions from this page from backtracking and triggering other submissions from separate views in the hierarchy
+        
+        ...
+    }
+}
+
+...
+}
 
 <div align="center">
 
