@@ -21,7 +21,25 @@
 
 This custom textfield is a very unique and fluid centerpiece for any form or search menu built using SwiftUI. It was designed to be as eye-catching and functional as possible, every element of this textfield adds not just stylistic value, but purpose as well. From the name you'd be right to guess the naming convention was derived from swords, as the transition of the textfield resembles the unsheathing of a sword; high precision, flamboyant, and purposeful; you're uncovering a tool of great importance, a gateway of personalization for your application.
 
+## Supported Platforms:
+* iOS
 
+## Minimum Required iOS Version:
+* iOS 16
+
+## Minimum Required Xcode / Swift Version to build this package:
+* Xcode 14 / Swift: 5.7
+
+## Installation:
+1.) Launch your target Xcode project 
+2.) Go to the menu bar
+3.) Click `File -> Add Packages Packages -> Search bar`
+4.) Enter the URL of this repository `https://github.com/jcook03266/Sheathed-TextField-SwiftUI/`
+5.) Set the dependency rule to `Up to Next Major Version`
+6.) Press the `Add Package` button at the bottom of the window. 
+7.) Done!
+
+## How to use this package in your code:
 
 <div align="center">
 
