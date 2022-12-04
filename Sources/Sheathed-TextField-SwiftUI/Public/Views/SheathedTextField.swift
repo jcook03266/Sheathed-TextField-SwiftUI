@@ -10,65 +10,65 @@ public struct SheathedTextField: View {
     @Namespace private var sheathedTextField
     
     // MARK: - Observed
-    @StateObject var model: SheathedTextFieldModel
+    @StateObject public var model: SheathedTextFieldModel
     
     // MARK: - States
-    @FocusState var textFieldFocused: Bool
+    @FocusState public var textFieldFocused: Bool
     
     // MARK: - View Properties
-    var animationDuration: CGFloat = 0.3
-    var placeholderText: String {
+    public var animationDuration: CGFloat = 0.3
+    public var placeholderText: String {
         return model.placeholderText.isEmpty ? model.title : model.placeholderText
     }
     
     // MARK: - Dimensions
-    var mainSize: CGSize = CGSize(width: 370, height: 60)
-    var textFieldContainerSize: CGSize {
+    public var mainSize: CGSize = CGSize(width: 370, height: 60)
+    public var textFieldContainerSize: CGSize {
         return model.unsheathed ? CGSize(width: mainSize.width - (sideIconUnsheathedTrailingPadding * 0.8),
                                          height: mainSize.height) : mainSize
     }
-    var textFieldSize: CGSize {
+    public var textFieldSize: CGSize {
         return CGSize(width: model.inFieldButtonIcon != nil ? (textFieldContainerSize.width - (inFieldButtonTrailingPadding * 4)) : (textFieldContainerSize.width - (inFieldButtonTrailingPadding * 2)),
                       height: textFieldContainerSize.height)
     }
-    var sheatheSize: CGSize {
+    public var sheatheSize: CGSize {
         return model.unsheathed ? .zero : CGSize(width: textFieldContainerSize.width * 0.6,
                                                  height: textFieldContainerSize.height)
     }
-    var sideIconBackgroundSize: CGSize {
+    public var sideIconBackgroundSize: CGSize {
         return CGSize(width: 60,
                       height: 40)
     }
-    var sideIconSize: CGSize {
+    public var sideIconSize: CGSize {
         return sideIconBackgroundSize.scaleBy(0.4)
     }
-    var inFieldButtonSize: CGSize {
+    public var inFieldButtonSize: CGSize {
         return CGSize(width: 25,
                       height: 25)
     }
-    var cornerRadius: CGFloat = 40,
+    public var cornerRadius: CGFloat = 40,
         buttonCornerRadius: CGFloat = 40,
         borderWidth: CGFloat = 2
     
     // MARK: - Padding
-    var textFieldLeadingPadding: CGFloat = 22,
+    public var textFieldLeadingPadding: CGFloat = 22,
         textFieldTrailingPadding: CGFloat = 22,
         inFieldButtonTrailingPadding: CGFloat = 22,
         titlePadding: CGFloat = 10,
         titleViewTrailingPadding: CGFloat = 5
     
-    var sideIconLeadingPadding: CGFloat {
+    public var sideIconLeadingPadding: CGFloat {
         return model.unsheathed ? 0 : 28
     }
-    var sideIconUnsheathedTrailingPadding: CGFloat {
+    public var sideIconUnsheathedTrailingPadding: CGFloat {
         return sideIconSize.width * 2.5
     }
-    var sideIconTrailingPadding: CGFloat {
+    public var sideIconTrailingPadding: CGFloat {
         return model.unsheathed ? sideIconUnsheathedTrailingPadding : 10
     }
     
     // MARK: - Subviews
-    var sideIcon: some View {
+    public var sideIcon: some View {
         IconView_Circle_Fill(iconImage: model.icon,
                              iconColor: model.iconColor ?? .white,
                              backgroundColor: model.sheatheColor,
@@ -77,7 +77,7 @@ public struct SheathedTextField: View {
                              enableShadow: model.unsheathed)
     }
     
-    var inFieldButton: some View {
+    public var inFieldButton: some View {
         Group {
             if model.inFieldButtonIcon != nil
                 && model.inFieldButtonAction != nil {
@@ -98,19 +98,19 @@ public struct SheathedTextField: View {
         }
     }
     
-    var sheathe: some View {
+    public var sheathe: some View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .fill(model.sheatheColor)
             .frame(width: sheatheSize.width,
                    height: sheatheSize.height)
     }
     
-    var textFieldContainer: some View {
+    public var textFieldContainer: some View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .strokeBorder(model.borderColor, lineWidth: borderWidth)
     }
     
-    var textFieldContainerInterior: some View {
+    public var textFieldContainerInterior: some View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .fill(model.fieldBackgroundColor)
             .frame(width: textFieldContainerSize.width - borderWidth,
@@ -121,7 +121,7 @@ public struct SheathedTextField: View {
                     y: model.shadowOffset?.height ?? 0)
     }
     
-    var titleView: some View {
+    public var titleView: some View {
         Text(model.title)
             .foregroundColor(model.textColor)
             .font(model.textFont)
@@ -129,7 +129,7 @@ public struct SheathedTextField: View {
             .minimumScaleFactor(0.1)
     }
     
-    var textField: some View {
+    public var textField: some View {
         Group {
             if !model.protected {
                 TextField(placeholderText,
@@ -176,7 +176,7 @@ public struct SheathedTextField: View {
         }
     }
     
-    var mainContainer: some View {
+    public var mainContainer: some View {
         HStack(alignment: .center) {
             if model.unsheathed {
                 Spacer()
@@ -270,7 +270,8 @@ public struct SheathedTextField: View {
     }
 }
 
-private struct SheathedTextField_Previews: PreviewProvider {
+#if DEBUG
+struct SheathedTextField_Previews: PreviewProvider {
     static func getModel() -> SheathedTextFieldModel {
         let passwordTextFieldModel: SheathedTextFieldModel = .init()
         
@@ -311,3 +312,4 @@ private struct SheathedTextField_Previews: PreviewProvider {
         }
     }
 }
+#endif
