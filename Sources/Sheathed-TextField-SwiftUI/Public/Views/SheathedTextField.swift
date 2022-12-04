@@ -240,6 +240,10 @@ public struct SheathedTextField: View {
         }
     }
     
+    public init(model: SheathedTextFieldModel) {
+        self._model = StateObject(wrappedValue: model)
+    }
+    
     public var body: some View {
         HStack {
             Spacer()
