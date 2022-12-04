@@ -40,6 +40,72 @@ This custom textfield is a very unique and fluid centerpiece for any form or sea
 7. Done!
 
 ## How to use this package in your code:
+1. At the top of your swift file add: `Import Sheathed-TextField-SwiftUI`
+2. Define a `SheathedTextFieldModel`
+3. Configure the model using the built in `configurator` function
+4. Define a `SheathedTextField` view and insert the configured model into that view
+5. Install the `SheathedTextField` inside of a parent view, Note: The textfield is already centered, and it has a device appropriate width you can also specify in the view's `init` constructor
+
+## Example:
+`
+class LoginScreenViewModel: CoordinatedGenericViewModel {
+// MARK: - Published / TextField Models
+    @Published var username_emailTextFieldModel: SheathedTextFieldModel!
+    @Published var passwordTextFieldModel: SheathedTextFieldModel!
+    
+    ...
+    
+    init(...) {
+        setModels()
+    }
+    
+func setModels() {
+        username_emailTextFieldModel = .init()
+        username_emailTextFieldModel.configurator { [weak self] model in
+            guard let self = self else { return }
+            
+            model.title = self.username_emailTextFieldTitle
+            model.placeholderText = "user123 / sampleEmail@Test.com"
+            model.icon = Icons.getIconImage(named: .person_fill)
+            model.keyboardType = .emailAddress
+            model.textContentType = .emailAddress
+            model.submitLabel = .next
+            model.onSubmitAction = { [weak self] in
+                guard let self = self else { return }
+                
+                self.passwordTextFieldModel.focus()
+            }
+        }
+        
+        passwordTextFieldModel = .init()
+        passwordTextFieldModel.configurator { [weak self] model in
+            guard let self = self else { return }
+            
+            model.title = self.passwordTextFieldTitle
+            model.placeholderText = "Cr3&TiV3Password!23"
+            model.icon = Icons.getIconImage(named: .lock_fill)
+            model.keyboardType = .asciiCapable
+            model.textContentType = .password
+            model.submitLabel = .done
+            
+            // Validation
+            model.entryValidationEnabled = true
+            model.validationCondition = { text in
+                !text.contains {
+                    $0 == "."
+                }
+            }
+            
+            model.inFieldButtonIcon = Icons.getIconImage(named: .eye_slash)
+            model.protected = true
+            model.inFieldButtonAction = {
+                model.protected.toggle()
+                
+                model.inFieldButtonIcon = model.protected ? Icons.getIconImage(named: .eye_slash) : Icons.getIconImage(named: .eye)
+            }
+        }
+        }
+  `
 
 <div align="center">
 
