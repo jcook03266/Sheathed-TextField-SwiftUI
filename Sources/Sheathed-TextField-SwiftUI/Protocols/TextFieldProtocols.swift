@@ -9,7 +9,11 @@ import SwiftUI
 protocol GenericTextFieldModelProtocol: ObservableObject {
     // MARK: - Constants
     var id: UUID { get }
-    var formatter: Formatter? { get set }
+    var keyboardType: UIKeyboardType { get set }
+    var textContentType: UITextContentType { get set }
+    var textInputAutocapitalization: TextInputAutocapitalization { get set }
+    var submitLabel: SubmitLabel { get set }
+    var autoCorrectionDisabled: Bool { get set }
     
     // MARK: - States
     var title: String { get set }

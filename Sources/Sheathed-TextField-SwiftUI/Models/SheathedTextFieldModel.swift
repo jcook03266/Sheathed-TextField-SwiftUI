@@ -10,11 +10,11 @@ class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
     // MARK: - Properties
     let id: UUID = .init()
     
-    var formatter: Formatter? = nil,
-        keyboardType: UIKeyboardType = .default,
+    var keyboardType: UIKeyboardType = .default,
         textContentType: UITextContentType = .username,
         textInputAutocapitalization: TextInputAutocapitalization = .never,
         submitLabel: SubmitLabel = .done,
+        autoCorrectionDisabled: Bool = true,
         
         // Labels and initial text to be displayed
         title: String,
@@ -86,12 +86,10 @@ class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
     
     init(title: String = "",
          placeholderText: String = "",
-         formatter: Formatter? = nil,
          textEntry: String = "")
     {
         self.title = title
         self.placeholderText = placeholderText
-        self.formatter = formatter
         self.textEntry = textEntry
     }
     

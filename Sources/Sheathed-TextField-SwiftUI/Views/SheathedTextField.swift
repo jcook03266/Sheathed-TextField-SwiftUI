@@ -28,7 +28,7 @@ struct SheathedTextField: View {
                                          height: mainSize.height) : mainSize
     }
     var textFieldSize: CGSize {
-        return CGSize(width: textFieldContainerSize.width - inFieldButtonTrailingPadding * 4,
+        return CGSize(width: model.inFieldButtonIcon != nil ? (textFieldContainerSize.width - (inFieldButtonTrailingPadding * 4)) : (textFieldContainerSize.width - (inFieldButtonTrailingPadding * 2)),
                       height: textFieldContainerSize.height)
     }
     var sheatheSize: CGSize {
@@ -54,7 +54,8 @@ struct SheathedTextField: View {
     var textFieldLeadingPadding: CGFloat = 22,
         textFieldTrailingPadding: CGFloat = 22,
         inFieldButtonTrailingPadding: CGFloat = 22,
-        titlePadding: CGFloat = 10
+        titlePadding: CGFloat = 10,
+        titleViewTrailingPadding: CGFloat = 5
     
     var sideIconLeadingPadding: CGFloat {
         return model.unsheathed ? 0 : 28
@@ -125,6 +126,7 @@ struct SheathedTextField: View {
             .foregroundColor(model.textColor)
             .font(model.textFont)
             .fontWeight(model.fontWeight)
+            .minimumScaleFactor(0.1)
     }
     
     var textField: some View {
@@ -137,6 +139,7 @@ struct SheathedTextField: View {
                 .textContentType(model.textContentType)
                 .keyboardType(model.keyboardType)
                 .disabled(!model.unsheathed)
+                .autocorrectionDisabled(model.autoCorrectionDisabled)
                 .focused($textFieldFocused)
                 .frame(width: textFieldSize.width,
                        height: textFieldSize.height)
@@ -157,6 +160,7 @@ struct SheathedTextField: View {
                 .textContentType(model.textContentType)
                 .keyboardType(model.keyboardType)
                 .disabled(!model.unsheathed)
+                .autocorrectionDisabled(model.autoCorrectionDisabled)
                 .focused($textFieldFocused)
                 .frame(width: textFieldSize.width,
                        height: textFieldSize.height)
@@ -198,9 +202,13 @@ struct SheathedTextField: View {
                                     .padding([.trailing],
                                              sideIconTrailingPadding)
                                 
-                                titleView.opacity(!model.unsheathed ? 1 : 0)
-                                    .transition(.scale)
-                                if !model.unsheathed { Spacer() }
+                                if !model.unsheathed {
+                                    titleView.opacity(!model.unsheathed ? 1 : 0)
+                                        .transition(.scale
+                                            .animation(.easeInOut))
+                                        .padding([.trailing], titleViewTrailingPadding)
+                                }
+                                Spacer()
                             }
                         }
                         .onTapGesture {
@@ -273,7 +281,7 @@ struct SheathedTextField_Previews: PreviewProvider {
             model.icon = Image(systemName: "lock.fill")
             model.entryValidationEnabled = true
             model.validationCondition = { text in
-                return text == "hello"
+                return text == "password123"
             }
             
             // In-field button
