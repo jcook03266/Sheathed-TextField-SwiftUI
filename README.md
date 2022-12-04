@@ -31,13 +31,13 @@ This custom textfield is a very unique and fluid centerpiece for any form or sea
 * Xcode 14 / Swift: 5.7
 
 ## Installation:
-1.) Launch your target Xcode project 
-2.) Go to the menu bar
-3.) Click `File -> Add Packages Packages -> Search bar`
-4.) Enter the URL of this repository `https://github.com/jcook03266/Sheathed-TextField-SwiftUI/`
-5.) Set the dependency rule to `Up to Next Major Version`
-6.) Press the `Add Package` button at the bottom of the window. 
-7.) Done!
+1. Launch your target Xcode project 
+2. Go to the menu bar
+3. Click `File -> Add Packages Packages -> Search bar`
+4. Enter the URL of this repository `https://github.com/jcook03266/Sheathed-TextField-SwiftUI/`
+5. Set the dependency rule to `Up to Next Major Version`
+6. Press the `Add Package` button at the bottom of the window. 
+7. Done!
 
 ## How to use this package in your code:
 
