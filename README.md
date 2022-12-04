@@ -40,7 +40,7 @@ This custom textfield is a very unique and fluid centerpiece for any form or sea
 7. Done!
 
 ## How to use this package in your code:
-1. At the top of your swift file add: `import Sheathed-TextField-SwiftUI`
+1. At the top of the swift files in which this textfield will be referenced, add: `import Sheathed-TextField-SwiftUI`
 2. Define a `SheathedTextFieldModel`
 3. Configure the model using the built in `configurator` function
 4. Define a `SheathedTextField` view and insert the configured model into that view
