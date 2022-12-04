@@ -72,7 +72,7 @@ class SheathedTextFieldModel: SheathedTextFieldModelProtocol {
         invalidEntryGlow: Color? = .red,
         validEntryGlow: Color? = .accentColor,
         defaultShadowColor: Color? = .gray.opacity(0.45),
-        shadowRadius: CGFloat? = 2,
+        shadowRadius: CGFloat? = 0,
         shadowOffset: CGSize? = CGSize(width: 0, height: 6)
     
     var shadowColor: Color? {

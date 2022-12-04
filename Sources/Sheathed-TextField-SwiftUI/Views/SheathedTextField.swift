@@ -17,6 +17,9 @@ struct SheathedTextField: View {
     
     // MARK: - View Properties
     var animationDuration: CGFloat = 0.3
+    var placeholderText: String {
+        return model.placeholderText.isEmpty ? model.title : model.placeholderText
+    }
     
     // MARK: - Dimensions
     var mainSize: CGSize = CGSize(width: 370, height: 60)
@@ -127,7 +130,7 @@ struct SheathedTextField: View {
     var textField: some View {
         Group {
             if !model.protected {
-                TextField(model.title,
+                TextField(placeholderText,
                           text: model.boundTextEntry)
                 .foregroundColor(model.textFieldTextColor)
                 .textInputAutocapitalization(model.textInputAutocapitalization)
@@ -147,7 +150,7 @@ struct SheathedTextField: View {
                 }
             }
             else {
-                SecureField(model.title,
+                SecureField(placeholderText,
                             text: model.boundTextEntry)
                 .foregroundColor(model.textFieldTextColor)
                 .textInputAutocapitalization(model.textInputAutocapitalization)
@@ -196,8 +199,7 @@ struct SheathedTextField: View {
                                              sideIconTrailingPadding)
                                 
                                 titleView.opacity(!model.unsheathed ? 1 : 0)
-                                    .animation(.none,
-                                               value: model.unsheathed)
+                                    .transition(.scale)
                                 if !model.unsheathed { Spacer() }
                             }
                         }
