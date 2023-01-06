@@ -134,45 +134,28 @@ public struct SheathedTextField: View {
             if !model.protected {
                 TextField(placeholderText,
                           text: model.boundTextEntry)
-                .foregroundColor(model.textFieldTextColor)
-                .textInputAutocapitalization(model.textInputAutocapitalization)
-                .textContentType(model.textContentType)
-                .keyboardType(model.keyboardType)
-                .disabled(!model.unsheathed)
-                .autocorrectionDisabled(model.autoCorrectionDisabled)
-                .focused($textFieldFocused)
-                .frame(width: textFieldSize.width,
-                       height: textFieldSize.height)
-                .padding([.leading],
-                         textFieldLeadingPadding)
-                .padding([.trailing],
-                         textFieldTrailingPadding)
-                .submitLabel(model.submitLabel)
-                .onSubmit {
-                    model.onSubmitAction?()
-                }
             }
             else {
                 SecureField(placeholderText,
                             text: model.boundTextEntry)
-                .foregroundColor(model.textFieldTextColor)
-                .textInputAutocapitalization(model.textInputAutocapitalization)
-                .textContentType(model.textContentType)
-                .keyboardType(model.keyboardType)
-                .disabled(!model.unsheathed)
-                .autocorrectionDisabled(model.autoCorrectionDisabled)
-                .focused($textFieldFocused)
-                .frame(width: textFieldSize.width,
-                       height: textFieldSize.height)
-                .padding([.leading],
-                         textFieldLeadingPadding)
-                .padding([.trailing],
-                         textFieldTrailingPadding)
-                .submitLabel(model.submitLabel)
-                .onSubmit {
-                    model.onSubmitAction?()
-                }
             }
+        }
+        .foregroundColor(model.textFieldTextColor)
+        .textInputAutocapitalization(model.textInputAutocapitalization)
+        .textContentType(model.textContentType)
+        .keyboardType(model.keyboardType)
+        .disabled(!model.unsheathed)
+        .autocorrectionDisabled(model.autoCorrectionDisabled)
+        .focused($textFieldFocused)
+        .frame(width: textFieldSize.width,
+               height: textFieldSize.height)
+        .padding([.leading],
+                 textFieldLeadingPadding)
+        .padding([.trailing],
+                 textFieldTrailingPadding)
+        .submitLabel(model.submitLabel)
+        .onSubmit {
+            model.onSubmitAction?()
         }
     }
     
