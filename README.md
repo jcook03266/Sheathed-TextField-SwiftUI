@@ -4,7 +4,7 @@
  
 [![Swift Version badge](https://img.shields.io/badge/Swift-5.7.1-orange.svg)](https://shields.io/)
 [![Platforms description badge](https://img.shields.io/badge/Platform-iOS-blue.svg)](https://shields.io/)
-[![GitHub license](https://badgen.net/github/license/jcook03266/Sheathed-TextField-SwiftUI)](https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/LICENSE)
+[![GitHub license](https://badgen.net/github/license/jcook03266/Sheathed-TextField-SwiftUI)](https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/Master/LICENSE)
 [![GitHub version](https://badge.fury.io/gh/jcook03266%2FSheathed-TextField-SwiftUI.svg)](https://github.com/jcook03266/Sheathed-TextField-SwiftUI)
 [![GitHub followers](https://img.shields.io/github/followers/jcook03266.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/jcook03266?tab=followers)
  
@@ -20,6 +20,7 @@
 * [Example ▶︎](#Example)
 * [Important Implementation Overview ▶︎](#Brief-Overview-of-necessary-property-wrappers)
 * [Demo ▶︎](#Demonstration)
+* [Support ▶︎](#Support)
 
 </details>
 </div>
@@ -28,8 +29,8 @@
 
 <div align="center">
 
-<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/sword.jpg" width="600">
-<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/main/Resources/Login-form-shot.jpg" width="600">
+<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/Master/Resources/sword.jpg" width="600">
+<img src="https://github.com/jcook03266/Sheathed-TextField-SwiftUI/blob/Master/Resources/Login-form-shot.jpg" width="600">
 
 </div>
 
@@ -211,6 +212,8 @@ Specify a validation condition to be executed every time the text entry changes,
                 }
             }
 ```
+### How do I trigger an 'unsheathe' when an icon view isn't present / when I don't define a side icon? 
+You can trigger an unsheathe action at any time by long pressing the textfield, this is also possible when an icon is present. When the icon view is rendered you can simply tap on it to trigger this event, but, this same functionality isn't available for the textfield component of the view because all touches will be eaten up by the `onTap` listener.
 
 <div align="center">
 
@@ -220,3 +223,6 @@ Specify a validation condition to be executed every time the text entry changes,
 https://user-images.githubusercontent.com/63657230/205480657-3303207a-bc1d-457d-b1d8-64cb90eb218e.mp4
 
 </div>
+
+## Support
+If you really enjoyed this simple library, then consider checking out my <a href="https://github.com/jcook03266" target=_blank>other work</a>, and or supporting me through my <a href="https://www.paypal.me/JCook215" target=_blank>sponsor links</a> on the side menu. Thanks for reading; keep calm and code on! <3
